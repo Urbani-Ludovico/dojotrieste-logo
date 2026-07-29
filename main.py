@@ -1,3 +1,4 @@
+from elements.judo import judo
 from elements.sakura import sakura, sakura_background
 from elements.tori import tori
 
@@ -53,6 +54,10 @@ def main(
 
     # Sakura
     svg.append(sakura(radius = radius))
+
+
+    # Judo
+    svg.append(judo(radius = radius, color = main_color))
 
 
     #
