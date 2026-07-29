@@ -2,8 +2,7 @@ import drawsvg as draw
 
 
 def judo(
-        radius: int,
-        color: str
+        radius: int
 ) -> draw.Group:
     coords = lambda x, y: (x * radius, y * radius)
 

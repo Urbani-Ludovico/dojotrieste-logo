@@ -2,8 +2,7 @@ import drawsvg as draw
 
 
 def tori(
-        radius: int,
-        color: str
+        radius: int
 ) -> draw.Group:
     coord = lambda x: x * radius
     coords = lambda x, y: (x * radius, y * radius)
@@ -18,11 +17,7 @@ def tori(
         path.V(coord(y := y + 0.0156))
         path.H(coord(x := x - 0.0234))
 
-    group = draw.Group(
-        fill = color,
-        stroke = "none",
-        stroke_width = 0
-    )
+    group = draw.Group()
 
     # Architrave
     group.append(path := draw.Path())

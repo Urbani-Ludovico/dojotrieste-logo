@@ -29,7 +29,10 @@ def main(
 
     svg = draw.Drawing(
         size, size,
-        origin = "center"
+        origin = "center",
+        fill = main_color,
+        stroke = "none",
+        stroke_width = 0
     )
 
 
@@ -39,7 +42,7 @@ def main(
 
     # Background
     if background is not None:
-        svg.append(sakura_background(radius = radius))
+        svg.append(sakura_background(radius = radius, color = background))
 
     # Sun
     svg.append(draw.Circle(
@@ -49,15 +52,15 @@ def main(
         stroke_width = 0
     ))
 
-    # Pagoda
-    svg.append(tori(radius = radius, color = main_color))
+    # Tori
+    svg.append(tori(radius = radius))
 
     # Sakura
     svg.append(sakura(radius = radius))
 
 
     # Judo
-    svg.append(judo(radius = radius, color = main_color))
+    svg.append(judo(radius = radius))
 
 
     #

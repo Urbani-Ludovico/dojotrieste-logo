@@ -12,8 +12,7 @@ def sakura(
         inner_c_x_outer_radius_percentage: float = 0.9,
         outer_c_x_inner_radius_percentage: float = 0.982,
         inner_c_x_inner_radius_percentage: float = 1.018,
-        radius_inner_percentage: float = 0.85,
-        color: str = "black"
+        radius_inner_percentage: float = 0.85
 ) -> draw.Path:
     """
     Args:
@@ -32,9 +31,6 @@ def sakura(
     """
 
     path = draw.Path(
-        fill = color,
-        stroke = "none",
-        stroke_width = 0,
         fill_rule = "evenodd"
     )
 
@@ -76,14 +72,14 @@ def sakura(
 
 def sakura_background(
         radius: int,
+        color: str,
         petals_number: int = 8,
         inner_radius_percentage: float = 0.92,
         c_x_outer_angle_percentage: float = 0.115,
         c_x_inner_angle_percentage: float = 0.3,
         inner_c_x_outer_radius_percentage: float = 0.9,
         inner_c_x_inner_radius_percentage: float = 1.018,
-        radius_inner_percentage: float = 0.85,
-        color: str = "white"
+        radius_inner_percentage: float = 0.85
 ):
     """
     Args:
@@ -99,9 +95,7 @@ def sakura_background(
     """
     
     path = draw.Path(
-        fill = color,
-        stroke = "none",
-        stroke_width = 0
+        fill = color
     )
 
     sakura_loop(
