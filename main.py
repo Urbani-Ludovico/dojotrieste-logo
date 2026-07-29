@@ -2,6 +2,7 @@ from elements.sakura import sakura, sakura_background
 from elements.tori import tori
 
 from utils.parser import parse_args
+from utils.check_parameters import check_parameters
 
 import drawsvg as draw
 
@@ -12,6 +13,13 @@ def main(
         background: str | None = "white",
         output: str | None = "logo.svg"
 ) -> draw.Drawing:
+    check_parameters(
+        size = size,
+        main_color = main_color,
+        background = background,
+        output = output
+    )
+
     #
     # SVG
     #
