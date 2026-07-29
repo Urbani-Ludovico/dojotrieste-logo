@@ -57,5 +57,28 @@ def judo(
     path.C(*coords(0.4395, -0.2891), *coords(0.5176, -0.248), *coords(0.5283, -0.2383))
     path.Z()
 
+    # Second kanji - first apostrophe
+    group.append(path := draw.Path())
+    path.M(*coords(0.3896, 0.0718))
+    path.C(*coords(0.3644, 0.0907), *coords(0.3499, 0.0631), *coords(0.3392, 0.0472))
+    path.C(*coords(0.3152, 0.0118), *coords(0.3004, -0.0002), *coords(0.3641, 0.0151))
+    path.C(*coords(0.4227, 0.0292), *coords(0.4072, 0.0586), *coords(0.3896, 0.0718))
+    path.Z()
+
+    # Second kanji - second apostrophe
+    group.append(path := draw.Path())
+    path.M(*coords(0.5093, 0.0443))
+    path.C(*coords(0.4835, 0.0616), *coords(0.4789, 0.0387), *coords(0.4688, 0.0209))
+    path.C(*coords(0.4466, -0.0183), *coords(0.4524, -0.0147), *coords(0.4942, -0.0036))
+    path.C(*coords(0.5253, 0.0047), *coords(0.5275, 0.032), *coords(0.5093, 0.0442))
+    path.Z()
+
+    # Second kanji - third apostrophe
+    group.append(path := draw.Path())
+    path.M(*coords(0.5391, 0.0498))
+    path.S(*coords(0.5469, 0.0488), *coords(0.5635, -0.002))
+    path.C(*coords(0.5664, -0.0078), *coords(0.5391, -0.0449), *coords(0.6055, -0.0205))
+    path.C(*coords(0.6543, 0.0039), *coords(0.625, 0.0059), *coords(0.6133, 0.0127))
+    path.S(*coords(0.5664, 0.0449), *coords(0.5391, 0.0498))
 
     return group
