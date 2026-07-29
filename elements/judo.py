@@ -4,6 +4,7 @@ import drawsvg as draw
 def judo(
         radius: int
 ) -> draw.Group:
+    coord = lambda x: x * radius
     coords = lambda x, y: (x * radius, y * radius)
 
     group = draw.Group(
@@ -80,5 +81,35 @@ def judo(
     path.C(*coords(0.5664, -0.0078), *coords(0.5391, -0.0449), *coords(0.6055, -0.0205))
     path.C(*coords(0.6543, 0.0039), *coords(0.625, 0.0059), *coords(0.6133, 0.0127))
     path.S(*coords(0.5664, 0.0449), *coords(0.5391, 0.0498))
+
+    # Second kanji - first block
+    group.append(path := draw.Path())
+    path.M(*coords(0.4941, 0.1299))
+    path.C(*coords(0.4961, 0.125), *coords(0.5, 0.1074), *coords(0.4971, 0.0977))
+    path.C(*coords(0.4531, 0.1055), *coords(0.4453, 0.1172), *coords(0.4287, 0.0928))
+    path.S(*coords(0.4102, 0.0742), *coords(0.4492, 0.0684))
+    path.C(*coords(0.5957, 0.0527), *coords(0.6055, 0.0215), *coords(0.6465, 0.0508))
+    path.S(*coords(0.6445, 0.0918), *coords(0.6348, 0.0898))
+    path.S(*coords(0.5859, 0.0908), *coords(0.5469, 0.0918))
+    path.C(*coords(0.5664, 0.1055), *coords(0.5469, 0.1094), *coords(0.5352, 0.1211))
+    path.C(*coords(0.5781, 0.1113), *coords(0.5781, 0.1113), *coords(0.6172, 0.125))
+    path.S(*coords(0.6289, 0.1602), *coords(0.6328, 0.2051))
+    path.S(*coords(0.6348, 0.2734), *coords(0.6211, 0.2891))
+    path.S(*coords(0.5957, 0.3027), *coords(0.582, 0.2822))
+    path.L(*coords(0.4902, 0.2881))
+    path.C(*coords(0.4844, 0.2949), *coords(0.4688, 0.3145), *coords(0.4512, 0.2773))
+    path.S(*coords(0.4531, 0.2734), *coords(0.4521, 0.2051))
+    path.S(*coords(0.4141, 0.1074), *coords(0.4805, 0.1318))
+    path.Z()
+    path.M(*coords(0.4922, 0.1562))
+    path.C(*coords(0.5859, 0.1367), *coords(0.5742, 0.1367), *coords(0.5752, 0.252))
+    path.L(*coords(0.4922, 0.2627))
+    path.V(coord(0.2432))
+    path.C(*coords(0.5078, 0.2441), *coords(0.5469, 0.2402), *coords(0.5645, 0.2363))
+    path.C(*coords(0.5625, 0.2109), *coords(0.543, 0.2031), *coords(0.4922, 0.2168))
+    path.V(coords(0.1982))
+    path.C(*coords(0.5078, 0.1992), *coords(0.5469, 0.1953), *coords(0.5645, 0.1914))
+    path.C(*coords(0.5625, 0.166), *coords(0.543, 0.1582), *coords(0.4922, 0.1719))
+    path.Z()
 
     return group
