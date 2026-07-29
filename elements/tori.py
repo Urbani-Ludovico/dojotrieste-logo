@@ -141,8 +141,3 @@ def tori(
     path.Z()
 
     return group
-
-
-# import pyperclip
-# def f(x):
-#     pyperclip.copy(str(round(x / 512, 4)))
