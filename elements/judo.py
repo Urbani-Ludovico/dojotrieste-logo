@@ -8,10 +8,7 @@ def judo(
     coords = lambda x, y: (x * radius, y * radius)
 
     group = draw.Group(
-        fill = "none",
-        stroke = "green",
-        stroke_width = 1,
-        opacity = 0.5
+        fill_rule = "evenodd"
     )
 
     # First kanji - top part
@@ -107,9 +104,27 @@ def judo(
     path.V(coord(0.2432))
     path.C(*coords(0.5078, 0.2441), *coords(0.5469, 0.2402), *coords(0.5645, 0.2363))
     path.C(*coords(0.5625, 0.2109), *coords(0.543, 0.2031), *coords(0.4922, 0.2168))
-    path.V(coords(0.1982))
+    path.V(coord(0.1982))
     path.C(*coords(0.5078, 0.1992), *coords(0.5469, 0.1953), *coords(0.5645, 0.1914))
     path.C(*coords(0.5625, 0.166), *coords(0.543, 0.1582), *coords(0.4922, 0.1719))
+    path.Z()
+
+    # Second kanji - second block
+    group.append(path := draw.Path())
+    path.M(*coords(0.3594, 0.291))
+    path.C(*coords(0.3555, 0.2246), *coords(0.3164, 0.2383), *coords(0.3477, 0.1641))
+    path.C(*coords(0.332, 0.1797), *coords(0.3027, 0.1816), *coords(0.2949, 0.1514))
+    path.C(*coords(0.3223, 0.1504), *coords(0.3398, 0.1387), *coords(0.3477, 0.127))
+    path.S(*coords(0.3516, 0.1113), *coords(0.3906, 0.125))
+    path.S(*coords(0.4141, 0.1602), *coords(0.3984, 0.166))
+    path.S(*coords(0.3809, 0.1855), *coords(0.375, 0.1992))
+    path.S(*coords(0.3672, 0.2148), *coords(0.3867, 0.2314))
+    path.S(*coords(0.4141, 0.2637), *coords(0.3965, 0.292))
+    path.C(*coords(0.4688, 0.3027), *coords(0.5078, 0.3291), *coords(0.7188, 0.3262))
+    path.C(*coords(0.6738, 0.3613), *coords(0.5957, 0.3984), *coords(0.5664, 0.3857))
+    path.S(*coords(0.4004, 0.3252), *coords(0.375, 0.3252))
+    path.S(*coords(0.3223, 0.3516), *coords(0.3008, 0.3242))
+    path.S(*coords(0.2734, 0.2891), *coords(0.3594, 0.291))
     path.Z()
 
     return group
