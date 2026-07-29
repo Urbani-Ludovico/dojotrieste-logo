@@ -1,5 +1,6 @@
 from elements.judo import judo
 from elements.sakura import sakura, sakura_background
+from elements.text import text_path
 from elements.tori import tori
 
 from utils.parser import parse_args
@@ -58,9 +59,32 @@ def main(
     # Sakura
     svg.append(sakura(radius = radius))
 
+    # Judo kanji
+    svg.append(judo(radius = radius))
 
     # Judo
-    svg.append(judo(radius = radius))
+    svg.append(text_path(
+        text = "Judo",
+        x = radius * 0.19,
+        y = radius * 0.55,
+        font_size = radius * 0.17
+    ))
+
+    # Dojo
+    svg.append(text_path(
+        text = "DOJO",
+        x = -radius * 0.65,
+        y = -radius * 0.22,
+        font_size = radius * 0.27
+    ))
+
+    # Trieste
+    svg.append(text_path(
+        text = "Trieste",
+        x = -radius * 0.49,
+        y = radius * 0.02,
+        font_size = radius * 0.22
+    ))
 
 
     #
