@@ -26,14 +26,14 @@ def tori(
 
     # Architrave
     group.append(path := draw.Path())
-    path.M(*coords(-0.6387, 0.2129))
-    path.C(*coords(-0.6348, 0.1953), *coords(-0.6328, 0.1562), *coords(-0.6445, 0.123))
-    path.C(*coords(-0.4883, 0.1953), *coords(0.0977, 0.1465), *coords(0.2676, 0.0488))
+    path.M(*coords(-0.6487, 0.2129))
+    path.C(*coords(-0.6428, 0.1953), *coords(-0.6428, 0.1562), *coords(-0.6495, 0.123))
+    path.C(*coords(-0.4883, 0.1953), *coords(0.0977, 0.1495), *coords(0.2676, 0.0488))
     path.C(*coords(0.252, 0.0781), *coords(0.2539, 0.1367), *coords(0.2598, 0.1562))
     path.L(*coords(0.1504, 0.1875))
     path.L(*coords(0.1406, 0.2275))
     path.C(*coords(0, 0.2539), *coords(-0.4883, 0.2695), *coords(-0.5557, 0.2607))
-    path.L(*coords(-0.5645, 0.2207))
+    path.L(*coords(-0.5645, 0.2257))
     path.Z()
 
     # Middle architrave
@@ -66,7 +66,7 @@ def tori(
 
     # Left pillar - horizontal axis - top
     group.append(path := draw.Path())
-    path.M(*coords(-0.5938, 0.5605))
+    path.M(*coords(-0.5738, 0.5605))
     path.V(coord(0.5264))
     path.L(*coords(-0.2715, 0.54))
     path.V(coord(0.5732))
@@ -77,15 +77,15 @@ def tori(
     path.M(*coords(-0.5664, 0.6973))
     path.L(*coords(-0.2734, 0.6953))
     path.V(coord(0.7266))
-    path.L(*coords(-0.5078, 0.7305))
+    path.L(*coords(-0.5078, 0.7335))
     path.Z()
 
     # Left pillar - left leg
     group.append(path := draw.Path())
-    path.M(*coords(-0.5801, 0.6836))
-    path.L(*coords(-0.5742, 0.4824))
-    arrow(path, -0.5742, 0.4824)
-    path.L(*coords(-0.5391, 0.7031))
+    path.M(*coords(-0.5601, 0.6836))
+    path.L(*coords(-0.5542, 0.4824))
+    arrow(path, -0.5542, 0.4824)
+    path.L(*coords(-0.5191, 0.7131))
     path.Z()
 
     # Left pillar - right leg
