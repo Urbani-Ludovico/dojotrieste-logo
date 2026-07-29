@@ -81,8 +81,8 @@ def main(
     # Trieste
     svg.append(text_path(
         text = "Trieste",
-        x = -radius * 0.49,
-        y = radius * 0.02,
+        x = -radius * 0.488,
+        y = radius * 0.01,
         font_size = radius * 0.22
     ))
 
@@ -93,6 +93,8 @@ def main(
 
     if output[-4:] == ".svg":
         svg.save_svg(output)
+    elif output[-4:] == ".png":
+        svg.save_png(output)
 
     return svg
 
