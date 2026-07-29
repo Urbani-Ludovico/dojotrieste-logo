@@ -1,7 +1,7 @@
-from sakura import sakura, sakura_background
-from tori import tori
+from elements.sakura import sakura, sakura_background
+from elements.tori import tori
 
-from parser import parse_args
+from utils.parser import parse_args
 
 import drawsvg as draw
 
