@@ -50,7 +50,7 @@ def main(
 
     # Sun
     svg.append(draw.Circle(
-        0, 0, 210,
+        0, 0, round(0.42 * radius, round_precision),
         fill = "#FF8000",
         stroke = "none",
         stroke_width = 0
@@ -77,14 +77,14 @@ def main(
     svg.append(text_path(
         text = "DOJO",
         x = -radius * 0.65,
-        y = -radius * 0.22,
+        y = -radius * 0.225,
         font_size = radius * 0.27
     ))
 
     # Trieste
     svg.append(text_path(
         text = "Trieste",
-        x = -radius * 0.488,
+        x = -radius * 0.5,
         y = radius * 0.01,
         font_size = radius * 0.22
     ))
