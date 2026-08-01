@@ -29,7 +29,7 @@ def main(
     #
 
     radius = size / 2
-    round_precision = ceil(abs(log10(radius * 4)))
+    round_precision = ceil(max(0, -log10(radius * 4)))
 
     svg = draw.Drawing(
         size, size,
