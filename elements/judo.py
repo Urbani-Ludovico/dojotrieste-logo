@@ -2,10 +2,11 @@ import drawsvg as draw
 
 
 def judo(
-        radius: int
+        radius: int,
+        round_precision: int
 ) -> draw.Group:
-    coord = lambda x: x * radius
-    coords = lambda x, y: (x * radius, y * radius)
+    coord = lambda x: round(x * radius, round_precision)
+    coords = lambda x, y: (round(x * radius, round_precision), round(y * radius, round_precision))
 
     group = draw.Group(
         fill_rule = "evenodd"

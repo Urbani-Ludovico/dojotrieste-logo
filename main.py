@@ -8,6 +8,8 @@ from utils.check_parameters import check_parameters
 
 import drawsvg as draw
 
+from math import ceil, log10
+
 
 def main(
         size: int = 1024,
@@ -27,6 +29,7 @@ def main(
     #
 
     radius = size / 2
+    round_precision = ceil(abs(log10(radius * 4)))
 
     svg = draw.Drawing(
         size, size,
@@ -43,7 +46,7 @@ def main(
 
     # Background
     if background is not None:
-        svg.append(sakura_background(radius = radius, color = background))
+        svg.append(sakura_background(radius = radius, color = background, round_precision = round_precision))
 
     # Sun
     svg.append(draw.Circle(
@@ -54,13 +57,13 @@ def main(
     ))
 
     # Tori
-    svg.append(tori(radius = radius))
+    svg.append(tori(radius = radius, round_precision = round_precision))
 
     # Sakura
-    svg.append(sakura(radius = radius))
+    svg.append(sakura(radius = radius, round_precision = round_precision))
 
     # Judo kanji
-    svg.append(judo(radius = radius))
+    svg.append(judo(radius = radius, round_precision = round_precision))
 
     # Judo
     svg.append(text_path(
