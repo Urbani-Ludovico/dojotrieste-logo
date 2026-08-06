@@ -7,6 +7,7 @@ from utils.parser import parse_args
 from utils.check_parameters import check_parameters
 
 import drawsvg as draw
+import cairosvg
 
 from math import ceil, log10
 
@@ -98,6 +99,9 @@ def main(
         svg.save_svg(output)
     elif output[-4:] == ".png":
         svg.save_png(output)
+    elif output[-4:] == ".pdf":
+        svg_data = svg.as_svg()
+        cairosvg.svg2pdf(bytestring = svg_data.encode("utf-8"), write_to = output)
 
     return svg
 
