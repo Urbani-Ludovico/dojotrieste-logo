@@ -2,7 +2,7 @@ import drawsvg as draw
 from math import sin, cos, pi
 
 def sakura(
-        radius: int,
+        radius: int | float,
         round_precision: int,
         petals_number: int = 8,
         outer_radius_percentage: float = 1,
@@ -74,7 +74,7 @@ def sakura(
 
 
 def sakura_background(
-        radius: int,
+        radius: int | float,
         color: str,
         round_precision: int,
         petals_number: int = 8,
@@ -119,7 +119,7 @@ def sakura_background(
 
 def sakura_loop(
         path: draw.Path,
-        radius: int,
+        radius: int | float,
         petals_number: int,
         round_precision: int,
         c_x_outer_angle: float,
@@ -151,3 +151,5 @@ def sakura_loop(
             )
 
     path.Z()
+
+    return path

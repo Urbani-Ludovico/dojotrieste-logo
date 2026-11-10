@@ -2,7 +2,7 @@ import drawsvg as draw
 
 
 def tori(
-        radius: int,
+        radius: int | float,
         round_precision: int
 ) -> draw.Group:
     coord = lambda x: round(x * radius, round_precision)

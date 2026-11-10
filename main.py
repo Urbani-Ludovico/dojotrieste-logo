@@ -14,8 +14,8 @@ from math import ceil, log10
 
 def main(
         size: int = 1024,
-        main_color: str = "black",
-        background: str | None = "white",
+        main_color: str = "white",
+        background: str | None = None,
         output: str | None = "logo.svg"
 ) -> draw.Drawing:
     check_parameters(
@@ -94,13 +94,22 @@ def main(
     #
     # SAVE
     #
-
-    if output[-4:] == ".svg":
+    if not output:
+        svg.set_render_size(400)
+        svg.rasterize()
+        
+    elif output[-4:] == ".svg":
         svg.save_svg(output)
+
     elif output[-4:] == ".png":
         svg.save_png(output)
+
     elif output[-4:] == ".pdf":
         svg_data = svg.as_svg()
+
+        if svg_data is None:
+            raise ValueError("SVG data is None, cannot convert to PDF.")
+        
         cairosvg.svg2pdf(bytestring = svg_data.encode("utf-8"), write_to = output)
 
     return svg
