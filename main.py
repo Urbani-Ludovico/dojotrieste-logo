@@ -4,7 +4,6 @@ from elements.text import text_path
 from elements.tori import tori
 
 from utils.parser import parse_args
-from utils.check_parameters import check_parameters
 
 import drawsvg as draw
 import cairosvg
@@ -14,23 +13,38 @@ from math import ceil, log10
 
 def main(
         size: int = 1024,
-        main_color: str = "white",
-        background: str | None = None,
+        style: str = "default",
+        background: bool = False,
+        background_color: str | None = None,
         output: str = "logo.svg"
 ) -> draw.Drawing:
-    check_parameters(
-        size = size,
-        main_color = main_color,
-        background = background,
-        output = output
-    )
+    #
+    # PARAMETERS
+    #
+
+    if style == "light":
+        main_color = "white"
+
+        if not background:
+            background_color = None
+        elif background_color is None:
+            background_color = "black"
+    else:
+        main_color = "black"
+        
+        if not background:
+            background_color = None
+        elif background_color is None:
+            background_color = "white"
+
+    radius = size / 2
+    
+    round_precision = ceil(max(0, -log10(radius * 4)))
+    lround = lambda x: round(x, round_precision)
 
     #
     # SVG
     #
-
-    radius = size / 2
-    round_precision = ceil(max(0, -log10(radius * 4)))
 
     svg = draw.Drawing(
         size, size,
@@ -46,25 +60,25 @@ def main(
     #
 
     # Background
-    if background is not None:
-        svg.append(sakura_background(radius = radius, color = background, round_precision = round_precision))
+    if background_color:
+        svg.append(sakura_background(radius = radius, color = background_color, lround = lround))
 
     # Sun
     svg.append(draw.Circle(
-        0, 0, round(0.42 * radius, round_precision),
+        0, 0, lround(0.42 * radius),
         fill = "#FF8000",
         stroke = "none",
         stroke_width = 0
     ))
 
     # Tori
-    svg.append(tori(radius = radius, round_precision = round_precision))
+    svg.append(tori(radius = radius, lround = lround))
 
     # Sakura
-    svg.append(sakura(radius = radius, round_precision = round_precision))
+    svg.append(sakura(radius = radius, lround = lround))
 
     # Judo kanji
-    svg.append(judo(radius = radius, round_precision = round_precision))
+    svg.append(judo(radius = radius, lround = lround))
 
     # Judo
     svg.append(text_path(

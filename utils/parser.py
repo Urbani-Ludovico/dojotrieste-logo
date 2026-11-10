@@ -6,31 +6,34 @@ def parse_args():
     )
 
     parser.add_argument(
-        "--size", "-s",
+        "--size",
         type = positive_int,
         help = "Size of the svg logo",
         default = 1024
     )
 
     parser.add_argument(
-        "--main-color", "-c",
-        choices = ["white", "black"],
-        help = "Main color",
-        default = "black"
+        "--style",
+        choices = ["default", "light"],
+        default = "default",
+        help = "Style of the logo",
     )
 
     parser.add_argument(
-        "--background", "-b",
-        type = background,
-        choices = ["white", "black", "none", "transparent"],
-        default = None,
-        help = "Background color",
+        "--background",
+        action = "store_true",
+        help = "Add background to the logo",
     )
 
     parser.add_argument(
-        "--output", "-o",
+        "--background-color",
+        help = "Color of the background",
+    )
+
+    parser.add_argument(
+        "--output",
         type = str,
-        required = True,
+        default = "logo.svg",
         help = "Output filename",
     )
 

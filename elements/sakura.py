@@ -1,9 +1,10 @@
 import drawsvg as draw
 from math import sin, cos, pi
+from typing import Callable
 
 def sakura(
         radius: int | float,
-        round_precision: int,
+        lround: Callable[[float], float],
         petals_number: int = 8,
         outer_radius_percentage: float = 1,
         inner_radius_percentage: float = 0.92,
@@ -44,7 +45,7 @@ def sakura(
         path,
         radius = radius * outer_radius_percentage,
         petals_number = petals_number,
-        round_precision = round_precision,
+        lround = lround,
         c_x_outer_angle = c_x_outer_angle_percentage * pi / petals_number,
         c_x_inner_angle = c_x_inner_angle_percentage * pi / petals_number,
         c_x_outer_radius = radius * outer_radius_percentage * outer_c_x_outer_radius_percentage,
@@ -61,7 +62,7 @@ def sakura(
         path,
         radius = radius * inner_radius_percentage,
         petals_number = petals_number,
-        round_precision = round_precision,
+        lround = lround,
         c_x_outer_angle = c_x_outer_angle_percentage * pi / petals_number,
         c_x_inner_angle = c_x_inner_angle_percentage * pi / petals_number,
         c_x_outer_radius = radius * inner_radius_percentage * inner_c_x_outer_radius_percentage,
@@ -76,7 +77,7 @@ def sakura(
 def sakura_background(
         radius: int | float,
         color: str,
-        round_precision: int,
+        lround: Callable[[float], float],
         petals_number: int = 8,
         inner_radius_percentage: float = 0.92,
         c_x_outer_angle_percentage: float = 0.115,
@@ -106,7 +107,7 @@ def sakura_background(
         path,
         radius = radius * inner_radius_percentage * 1.01,
         petals_number = petals_number,
-        round_precision = round_precision,
+        lround = lround,
         c_x_outer_angle = c_x_outer_angle_percentage * pi / petals_number,
         c_x_inner_angle = c_x_inner_angle_percentage * pi / petals_number,
         c_x_outer_radius = radius * inner_radius_percentage * inner_c_x_outer_radius_percentage,
@@ -121,33 +122,33 @@ def sakura_loop(
         path: draw.Path,
         radius: int | float,
         petals_number: int,
-        round_precision: int,
+        lround: Callable[[float], float],
         c_x_outer_angle: float,
         c_x_inner_angle: float,
         c_x_outer_radius: float,
         c_x_inner_radius: float,
         radius_inner_percentage: float
 ) -> draw.Path:
-    path.M(round(radius, round_precision), 0)
+    path.M(lround(radius), 0)
 
     for i in range(1, 2 * petals_number + 1):
         if i % 2 == 0:
             path.C(
-                round(c_x_inner_radius * cos((i - 1) * pi / petals_number + c_x_inner_angle), round_precision),
-                round(c_x_inner_radius * sin((i - 1) * pi / petals_number + c_x_inner_angle), round_precision),
-                round(c_x_outer_radius * cos(i * pi / petals_number - c_x_outer_angle), round_precision),
-                round(c_x_outer_radius * sin(i * pi / petals_number - c_x_outer_angle), round_precision),
-                round(radius * cos(i * pi / petals_number), round_precision),
-                round(radius * sin(i * pi / petals_number), round_precision)
+                lround(c_x_inner_radius * cos((i - 1) * pi / petals_number + c_x_inner_angle)),
+                lround(c_x_inner_radius * sin((i - 1) * pi / petals_number + c_x_inner_angle)),
+                lround(c_x_outer_radius * cos(i * pi / petals_number - c_x_outer_angle)),
+                lround(c_x_outer_radius * sin(i * pi / petals_number - c_x_outer_angle)),
+                lround(radius * cos(i * pi / petals_number)),
+                lround(radius * sin(i * pi / petals_number))
             )
         else:
             path.C(
-                round(c_x_outer_radius * cos((i - 1) * pi / petals_number + c_x_outer_angle), round_precision),
-                round(c_x_outer_radius * sin((i - 1) * pi / petals_number + c_x_outer_angle), round_precision),
-                round(c_x_inner_radius * cos(i * pi / petals_number - c_x_inner_angle), round_precision),
-                round(c_x_inner_radius * sin(i * pi / petals_number - c_x_inner_angle), round_precision),
-                round(radius * radius_inner_percentage * cos(i * pi / petals_number), round_precision),
-                round(radius * radius_inner_percentage * sin(i * pi / petals_number), round_precision)
+                lround(c_x_outer_radius * cos((i - 1) * pi / petals_number + c_x_outer_angle)),
+                lround(c_x_outer_radius * sin((i - 1) * pi / petals_number + c_x_outer_angle)),
+                lround(c_x_inner_radius * cos(i * pi / petals_number - c_x_inner_angle)),
+                lround(c_x_inner_radius * sin(i * pi / petals_number - c_x_inner_angle)),
+                lround(radius * radius_inner_percentage * cos(i * pi / petals_number)),
+                lround(radius * radius_inner_percentage * sin(i * pi / petals_number))
             )
 
     path.Z()

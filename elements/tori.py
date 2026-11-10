@@ -1,12 +1,13 @@
 import drawsvg as draw
+from typing import Callable
 
 
 def tori(
         radius: int | float,
-        round_precision: int
+        lround: Callable[[float], float]
 ) -> draw.Group:
-    coord = lambda x: round(x * radius, round_precision)
-    coords = lambda x, y: (round(x * radius, round_precision), round(y * radius, round_precision))
+    coord = lambda x: lround(x * radius)
+    coords = lambda x, y: (lround(x * radius), lround(y * radius))
 
     def arrow(path: draw.Path, x: float, y: float) -> None:
         path.H(coord(x := x - 0.0234))
