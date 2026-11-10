@@ -16,7 +16,7 @@ def main(
         size: int = 1024,
         main_color: str = "white",
         background: str | None = None,
-        output: str | None = "logo.svg"
+        output: str = "logo.svg"
 ) -> draw.Drawing:
     check_parameters(
         size = size,
@@ -94,11 +94,7 @@ def main(
     #
     # SAVE
     #
-    if not output:
-        svg.set_render_size(400)
-        svg.rasterize()
-        
-    elif output[-4:] == ".svg":
+    if output[-4:] == ".svg":
         svg.save_svg(output)
 
     elif output[-4:] == ".png":
