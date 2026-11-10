@@ -10,4 +10,4 @@ Python script generator for the logo.
 | `--style` | "default" \| "light" | "default" | Style of the logo |
 | `--background` | | False | Add background to the logo |
 | `--background-color` | str \| None | | Color of the background |
-| `--output` `-o` | str | "logo.svg" | Output filename |
+| `--output` | str | "logo.svg" | Output filename |
